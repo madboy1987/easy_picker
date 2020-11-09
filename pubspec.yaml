@@ -1,8 +1,8 @@
 name: easy_picker
 description: pick anything
 version: 0.0.1
-author:
-homepage:
+author: 大眼软件
+homepage: http://git.kekesoft.cn/easy_picker.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  path: ^1.7.0
+  ext_storage: ^1.0.3
 
 dev_dependencies:
   flutter_test:
