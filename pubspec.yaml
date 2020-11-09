@@ -1,8 +1,7 @@
 name: easy_picker
 description: pick anything
-version: 0.0.1
-author: 大眼软件
-homepage: http://git.kekesoft.cn/easy_picker.git
+version: 1.0.0
+homepage: https://github.com/madboy1987/easy_picker
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

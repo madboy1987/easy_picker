@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## \[1.0.0\] - 2020.11.09.
 
-* TODO: Describe initial release.
+* 选择单个文件夹。

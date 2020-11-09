@@ -1,4 +1,6 @@
+import 'package:easy_picker/easy_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(MyApp());
@@ -96,22 +98,26 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          children: <Widget>[],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        onPressed: () {
+          pick();
+        },
+      ),
     );
+  }
+
+  pick() async {
+    if (await Permission.storage.request().isGranted) {
+      var selectedPath = Navigator.push<String>(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DirectoryPicker(),
+        ),
+      );
+    }
   }
 }

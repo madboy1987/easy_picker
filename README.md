@@ -1,14 +1,37 @@
 # easy_picker
 
-pick anything
+目录选择器，目前只支持Android。
 
 ## Getting Started
+AndroidManifest.xml声明权限：
+```    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+```
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+**注意：** android/app/build.gradle中的targetSdkVersion、compileSdkVersion如果大于等于29，那么需要如下两种修改策略（任选一种即可）
+* 修改targetSdkVersion、compileSdkVersion为28
+* 修改AndroidManifest.xml中的application节点，添加属性android:requestLegacyExternalStorage="true"
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+pubspec.yaml添加依赖：
+
+```
+directory_picker: easy_picker^1.0.0
+```
+
+使用方式（申请权限推荐使用：permission_handler，下面的代码示例也是使用该插件）
+```dart
+  pick() async {
+    if (await Permission.storage.request().isGranted) {
+      var selectedPath = Navigator.push<String>(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DirectoryPicker(),
+        ),
+      );
+    }
+  }
+```
+
+
